@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <link rel = "stylesheet" type = "text/css" href = "/game.css">
@@ -8,6 +8,7 @@
         <meta name = "viewport" content = "width = device-width, initial-scale = 1.0, user-scalable = no">
     </head>
     <body class = "container">
+        <!-- ................................Title............................... -->
         <div class = "row">
             <div class = "col-lg-4">
                 <img src = "/hand1.png" id = "centerImage" class = "img-responsive" alt = "hand1">
@@ -19,18 +20,26 @@
                 <img src = "/hand2.gif" id = "centerImage" class = "img-responsive" alt = "hand2">
             </div>
         </div>
+        <!-- .............................................................................-->
         <div class = "row">
             <div class = "col-lg-12">
+                <!-- ................................Form for getting name and adding cookie and moving to start page............................... -->
                 <form action = "/start" method = "post">
                     <h3 class = "text-center">Please enter your name:</h3>
-                    <input class = "center-block vertical-center" type = "text" name = "user" value = "Aaron" id = "cookie">
-                    <input class = "center-block vertical-center" type = "submit" value = "Submit" onclick = "newCookie()">
+                    <input class = "center-block vertical-center" type = "text" name = "user" value = "Enter Name Here" id = "cookie">
+                    <input class = "center-block vertical-center" type = "submit" value = "Play" onclick = "newCookie()">
                     <script>                      
                         function newCookie() {                            
                             document.cookie = "username=" + document.getElementById('cookie').value;
                         }                        
                     </script>
                 </form>
+                 <!-- ................................Form for moving to leadboard page............................... -->
+                <form action = "/leaderBoard" method = "get">
+                    <h3 class = "text-center">Click below to access the leaderboard</h3>
+                    <input class = "center-block vertical-center" type = "submit" value = "Click Here" onclick = "newCookie()">                    
+                </form>
+
             </div>                
         </div>
 

@@ -8,6 +8,7 @@
         <meta name = "viewport" content = "width = device-width, initial-scale = 1.0, user-scalable = no">
     </head>
     <body class = "container">
+        <!-- ................................Title............................... -->
         <div class = "row">
             <div class = "col-lg-4">
                 <img src = "/hand1.png" id = "centerImage" class = "img-responsive" alt = "hand1">
@@ -19,15 +20,19 @@
                 <img src = "/hand2.gif" id = "centerImage" class = "img-responsive" alt = "hand2">
             </div>
         </div>
+        <!-- ...................................................................... -->
         <div class = "row">
             <div class = "col-lg-12">
-                <form action = "/start" method = "post">
+                 <!-- ................................Move to gamePlay............................... -->
+                <form action = "/gamePlay" method = "get">
                     <h3 id = "userId" class = "text-center"></h3>
+                    
                     <h3 class = "text-center">Press the button when ready to play:</h3>                    
                     <input class = "center-block vertical-center" type = "submit" value = "Submit">
                 </form>
             </div>                
         </div>
+         <!-- ................................Adding name of user to webpage............................... -->
         <script>
             var name = document.cookie;
             var userName = name.substring(name.indexOf('=') + 1, name.length);

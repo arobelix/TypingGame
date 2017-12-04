@@ -1,16 +1,16 @@
 {
-	"userNameData": [
-		{
-			"user": "default",
+	"userNameData": {
+		"default": {
 			"score": 0
 		},
-		{
-			"user": "Aaron1",
+		"Aaron": {
 			"score": 0
 		},
-		{
-			"user": "Michael",
+		"Aaron1": {
+			"score": 0
+		},
+		"Aaron5": {
 			"score": 0
 		}
-	]
+	}
 }
