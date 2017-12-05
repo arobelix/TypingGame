@@ -24,16 +24,28 @@
         <div class = "row">
             <div class = "col-lg-12">
                  <!-- ................................Move to gamePlay............................... -->
-                <form action = "/gamePlay" method = "get">
-                    <h3 id = "userId" class = "text-center"></h3>
-                    
-                    <h3 class = "text-center">Press the button when ready to play:</h3>                    
+                <form id = "idform" action = "/gamePlay" method = "get">
+                    <h3 id = "userId" class = "text-center">g</h3>                    
+                    <h3 class = "text-center">Press the button when ready to play:</h3>   
                     <input class = "center-block vertical-center" type = "submit" value = "Submit">
                 </form>
             </div>                
         </div>
          <!-- ................................Adding name of user to webpage............................... -->
         <script>
+            $('#idform').submit(function(e) {
+                console.log("here");
+                //alert(document.cookie.substring(document.cookie.indexOf('=')));                
+                $.ajax({
+                    type: 'POST',
+                    url: $('#idform').attr('action'),
+                    data: { user: document.cookie.substring(document.cookie.indexOf('=') + 1)},
+                    success: function(data) { 
+                        
+                    }
+                });
+                 //e.preventDefault();
+            });
             var name = document.cookie;
             var userName = name.substring(name.indexOf('=') + 1, name.length);
             document.getElementById('userId').innerHTML = userName;
