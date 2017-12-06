@@ -54,13 +54,18 @@ app.post('/start', function(req, res){
         }
     }
     if(currentUserFlag) {
-    parsedJSON.userNameData[req.body.user] = {"score": 0, "timeStart": "default"};
+    parsedJSON.userNameData[req.body.user] = {"score": 0, "timeStart": "default", "sentence": "default"};
     }
     fs.writeFileSync('userNameDataBase.json', JSON.stringify(parsedJSON, null, '\t'));
    
     
     res.sendFile(__dirname + '/start.html');
 });
+app.get('/start', function(req, res){   
+
+    res.sendFile(__dirname + '/start.html');
+});
+
 ////////////////////////////////////////////////////////////
 ////////////////////Gameplay///////////////////////////////
 app.get('/gamePlay', function(req, res){    
@@ -72,14 +77,15 @@ app.post('/gamePlay', function(req, res){
     var rawJSON = fs.readFileSync("userNameDataBase.json");
     var parsedJSON = JSON.parse(rawJSON);
     var timeStart = new Date();
-    var time = timeStart.getHours() + " " + timeStart.getMinutes() + " " + timeStart.getSeconds();
+    var time = timeStart.getHours() * 3600 + timeStart.getMinutes() * 60 + timeStart.getSeconds();
     console.log(req.body);    
     parsedJSON.userNameData[req.body.user].timeStart = time;
    
     fs.writeFileSync('userNameDataBase.json', JSON.stringify(parsedJSON, null, '\t'));
     res.sendFile(__dirname + '/gamePlay.html');
 });
-app.get('/sentence.json', function(req, res){ 
+app.get('/sentence.json/:name', function(req, res){ 
+    console.log(req.params.name);
     var text = fs.readFileSync("BillOfRights.txt", "utf-8"); 
     var lines = text.split('\n');
     var index = Math.floor(Math.random() * (lines.length - 1));
@@ -87,14 +93,42 @@ app.get('/sentence.json', function(req, res){
     var parsedJSON = JSON.parse(rawJSON); 
     parsedJSON.sentence = lines[index];
     fs.writeFileSync('sentence.json', JSON.stringify(parsedJSON, null, '\t'));
+    
+    var rawJSON2 = fs.readFileSync("userNameDataBase.json");
+    var parsedJSON2 = JSON.parse(rawJSON2);
+    parsedJSON2.userNameData[req.params.name].sentence = lines[index];
+    fs.writeFileSync('userNameDataBase.json', JSON.stringify(parsedJSON2, null, '\t'));
 
     res.sendFile(__dirname + '/sentence.json');
 });
+///////////////////Game Complete////////////////////////////////////
 app.post('/gameComplete', function(req, res){    
-    console.log(req.body);
-    //Record time, get userName, calcualte score//////////////////////////////////////
-    //change score, then require page to request json file, move sentence to JSON////////////////////////////////Also write gameComplete page where score is displayed to user.
-    //to play new game make post request to start, also add link to go back to leaderboard
+    var timeEnd = new Date();
+    var rawJSON = fs.readFileSync("userNameDataBase.json"); 
+    var parsedJSON = JSON.parse(rawJSON);
+    var timeStart = parsedJSON.userNameData[req.body.user].timeStart;
+    var time = timeEnd.getHours() * 3600 + timeEnd.getMinutes() * 60 + timeEnd.getSeconds() - timeStart;
+    var actual = parsedJSON.userNameData[req.body.user].sentence;
+    var received = req.body.sentence;
+    var correctCounter = 0;
+    //score calculation
+    for (var g = 0; g < actual.length && g < received.length; g++) {
+       if(actual.charAt(g) == received.charAt(g)) {
+           correctCounter++;
+       } 
+    }
+    console.log(correctCounter);
+    var score = correctCounter * 10 / time;
+    parsedJSON.userNameData[req.body.user].score += Math.floor(score);
+    fs.writeFileSync('userNameDataBase.json', JSON.stringify(parsedJSON, null, '\t'));
+    ///////////////////////////////////////
     res.sendFile(__dirname + '/gameComplete.html');
 });
+
+app.get('/gameComplete', function(req, res){ 
+
+    res.sendFile(__dirname + '/gameComplete.html');
+});
+
+/////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////

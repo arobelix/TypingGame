@@ -1,32 +1,19 @@
 {
 	"userNameData": {
 		"default": {
-			"score": 0,
-			"timeStart": "default"
+			"score": 100,
+			"timeStart": "default",
+			"sentence": "default"
 		},
 		"Aaron": {
-			"score": 0,
-			"timeStart": "0 0 47"
-		},
-		"Aaron1": {
-			"score": 0,
-			"timeStart": "default"
-		},
-		"Aaron5": {
-			"score": 0,
-			"timeStart": "default"
+			"score": 317,
+			"timeStart": 65905,
+			"sentence": "Note: The following text is a transcription of the first ten amendments to the"
 		},
 		"Enter Name Here": {
-			"score": 0,
-			"timeStart": "23 55 18"
-		},
-		"Aaron15": {
-			"score": 0,
-			"timeStart": "default"
-		},
-		"Rishi": {
-			"score": 0,
-			"timeStart": "default"
+			"score": 100,
+			"timeStart": 48127,
+			"sentence": "public trial, by an impartial jury of the State and district wherein the crime"
 		}
 	}
 }

@@ -25,10 +25,38 @@
             <div class = "col-lg-4">                           
             </div> 
             <div class = "col-lg-4 sentence">  
-                <h2>Type the following sentence:</h2>
+                <h2 id = "score"></h2>
             </div>
-            <div class = "col-lg-4">    
-
+            <div class = "col-lg-6"> 
+                <form id = "idform" action = "/start" method = "get">
+                    <h3 id = "userId" class = "text-center"></h3>                    
+                    <h3 class = "text-center">Press the button to play again:</h3>   
+                    <input class = "center-block vertical-center" type = "submit" value = "Submit">
+                </form>
+                <script>
+                    $('#idform').submit(function(e) {
+                        console.log("here");
+                        //alert(document.cookie.substring(document.cookie.indexOf('=')));                
+                        $.ajax({
+                            type: 'POST',
+                            url: $('#idform').attr('action'),
+                            data: { user: document.cookie.substring(document.cookie.indexOf('=') + 1)},
+                            success: function(data) { 
+                        
+                            }
+                    });
+                    //e.preventDefault();
+                    });
+                    $.getJSON('/userNameDataBase.json', function(parsedJSON) { 
+                        document.getElementById('score').innerHTML = "Your score is " + parsedJSON.userNameData[document.cookie.substring(document.cookie.indexOf('=') + 1)].score;
+                    });
+                </script>
+            </div>
+            <div class = "col-lg-6">
+                <form id = "idform" action = "/leaderBoard" method = "get">
+                    <h3 class = "text-center">Back to Leader Board</h3>
+                    <input class = "center-block vertical-center" type = "submit" value = "Back">                    
+                </form>
             </div>
         </div>
 
