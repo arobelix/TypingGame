@@ -58,14 +58,14 @@
     <body class = "container">
         <!-- ..............................Background............................ -->
         <video controls autoplay id="bg-elem" preload="auto" loop="loop" muted="muted">
-          <source src="video.mp4" type="video/mp4">
+          <source src="/video.mp4" type="video/mp4">
           Video not supported
           <!--
           Video is from https://www.youtube.com/watch?v=bAIs6DMQ4Jc
           -->
         </video>
         <audio controls="controls" autoplay=true id="music" loop="true" style="visibility:hidden">
-          <source src="music.mp3" type="audio/mp3" />
+          <source src="/music.mp3" type="audio/mp3" />
           <!--
           Music is from https://www.youtube.com/watch?v=XbxZargtXug
           -->
@@ -92,7 +92,7 @@
             <div class = "col-lg-4">                           
             </div> 
             <div class = "col-lg-4 sentence">  
-                <h2 id = "score"></h2>
+                <h2 id = "score" style="color:white"></h2>
             </div>
             <div class = "col-lg-6"  style="PADDING-LEFT: 15%"> 
                 <form id = "idform" action = "/start" method = "get">

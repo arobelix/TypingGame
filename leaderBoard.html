@@ -51,15 +51,15 @@
     <body class = "container">
         <!-- ..............................Background............................ -->
         <video controls autoplay id="bg-elem" preload="auto" loop="loop" muted="muted">
-          <source src="video.mp4" type="video/mp4">
+          <source src="/video.mp4" type="video/mp4">
           Video not supported
           <!--
           Video is from https://www.youtube.com/watch?v=bAIs6DMQ4Jc
           -->
         </video>
         <audio controls="controls" autoplay=true id="music" loop="true" style="visibility:hidden">
-          <source src="music.mp3" type="audio/mp3" />
-          <!--
+          <source src="/music.mp3" type="audio/mp3" />
+          <!--          
           Music is from https://www.youtube.com/watch?v=XbxZargtXug
           -->
         </audio>
@@ -69,7 +69,7 @@
         </script>
         
         <!-- ................................Title............................... -->
-        <div class = "row">
+        <div class = "row" style="height:100px">
             <div class = "col-lg-4">                           
             <!-- ................................Button for returning back to root............................... -->
             <form action = "/" method = "get" id="home">
@@ -95,12 +95,27 @@
             </div>
         </div>
         <!-- ................................Extracting JSON from file to html page............................... -->
-        <script>                    
+        <script>
+            var users = [];
             $.getJSON('/userNameDataBase.json', function(parsedJSON) { 
                 console.log(parsedJSON.userNameData["Aaron"].score);
                 for(var entry in parsedJSON.userNameData) { 
-                    $("<h3 class = \"text-center\">" + entry + "   ...   " + parsedJSON.userNameData[entry].score + "</h3>").appendTo(".board"); 
-                }   
+                    users.push(entry);                     
+                }
+                
+                for (var i = 0; i < users.length - 1; i++) {
+                    for (var j = i + 1; j < users.length; j++) {
+                        console.log(parsedJSON.userNameData[users[i]].score)
+                        if (parsedJSON.userNameData[users[i]].score < parsedJSON.userNameData[users[j]].score) {
+                            var temp = parsedJSON.userNameData[users[i]].score;
+                            parsedJSON.userNameData[users[i]].score = parsedJSON.userNameData[users[j]].score;
+                            parsedJSON.userNameData[users[j]].score = temp;
+                        }
+                    }
+                } 
+                for (var i = 0; i < users.length - 1; i++) {
+                    $("<h3 style=\"color:white\"class = \"text-center\">" + users[i] + "   ...   " + parsedJSON.userNameData[users[i]].score + "</h3>").appendTo(".board"); 
+                }
             });
         </script>
     </body>    

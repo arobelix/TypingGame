@@ -6,14 +6,34 @@
 			"sentence": "default"
 		},
 		"Aaron": {
-			"score": 317,
-			"timeStart": 65905,
-			"sentence": "Note: The following text is a transcription of the first ten amendments to the"
+			"score": 318,
+			"timeStart": 74568,
+			"sentence": "Articles, when ratified by three fourths of the said Legislatures, to be valid"
 		},
 		"Enter Name Here": {
 			"score": 100,
 			"timeStart": 48127,
 			"sentence": "public trial, by an impartial jury of the State and district wherein the crime"
+		},
+		"Anonymous": {
+			"score": 51,
+			"timeStart": 75678,
+			"sentence": "The Preamble to The Bill of Rights"
+		},
+		"Michael": {
+			"score": 28,
+			"timeStart": 74705,
+			"sentence": "be twice put in jeopardy of life or limb; nor shall be compelled in any criminal"
+		},
+		"Rishi": {
+			"score": 40,
+			"timeStart": 74779,
+			"sentence": "abuse of its powers, that further declaratory and restrictive clauses should be"
+		},
+		"Michael Zhang": {
+			"score": 2738,
+			"timeStart": 76057,
+			"sentence": "according to the rules of the common law."
 		}
 	}
 }

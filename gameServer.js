@@ -32,6 +32,14 @@ app.get('/game.css', function(req, res){
  
     res.sendFile(__dirname + '/game.css');
 });
+app.get('/video.mp4', function(req, res){     
+ 
+    res.sendFile(__dirname + '/video.mp4');
+});
+app.get('/music.mp3', function(req, res){     
+ 
+    res.sendFile(__dirname + '/music.mp3');
+});
 ////////////////////////////////////////////////////////////////
 ////////////////////leaderboard/////////////////////////////
 app.get('/leaderBoard', function(req, res){    
@@ -117,8 +125,10 @@ app.post('/gameComplete', function(req, res){
            correctCounter++;
        } 
     }
-    console.log(correctCounter);
-    var score = correctCounter * 10 / time;
+    console.log("correct" + correctCounter);
+    console.log("time" + time);
+    var score = correctCounter * 100 / time;
+    
     parsedJSON.userNameData[req.body.user].score += Math.floor(score);
     fs.writeFileSync('userNameDataBase.json', JSON.stringify(parsedJSON, null, '\t'));
     ///////////////////////////////////////

@@ -57,14 +57,14 @@
     <body class = "container">
         <!-- ..............................Background............................ -->
         <video controls autoplay id="bg-elem" preload="auto" loop="loop" muted="muted">
-          <source src="video.mp4" type="video/mp4">
+          <source src="/video.mp4" type="video/mp4">
           Video not supported
           <!--
           Video is from https://www.youtube.com/watch?v=bAIs6DMQ4Jc
           -->
         </video>
         <audio controls="controls" autoplay=true id="music" loop="true" style="visibility:hidden">
-          <source src="music.mp3" type="audio/mp3" />
+          <source src="/music.mp3" type="audio/mp3" />
           <!--
           Music is from https://www.youtube.com/watch?v=XbxZargtXug
           -->
@@ -122,7 +122,7 @@
                  //e.preventDefault();
           });
           $.getJSON('/sentence.json/' + document.cookie.substring(document.cookie.indexOf('=') + 1), function(parsedJSON) { 
-              $("<p class = \"text-center\">" + parsedJSON.sentence + "</p>").appendTo(".sentence"); 
+              $("<p style=\"color:white\" class = \"text-center\">" + parsedJSON.sentence + "</p>").appendTo(".sentence"); 
           });
         </script>
     </body>    
