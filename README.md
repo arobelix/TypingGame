@@ -1,2 +1,1 @@
-# TypingGame
-testing
+# Fast Fingers
