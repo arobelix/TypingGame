@@ -6,8 +6,8 @@
 			"sentence": "default"
 		},
 		"Aaron": {
-			"score": 318,
-			"timeStart": 74568,
+			"score": 451,
+			"timeStart": 83281,
 			"sentence": "Articles, when ratified by three fourths of the said Legislatures, to be valid"
 		},
 		"Enter Name Here": {
@@ -17,8 +17,8 @@
 		},
 		"Anonymous": {
 			"score": 51,
-			"timeStart": 75678,
-			"sentence": "The Preamble to The Bill of Rights"
+			"timeStart": 66717,
+			"sentence": "best ensure the beneficent ends of its institution."
 		},
 		"Michael": {
 			"score": 28,
@@ -34,6 +34,21 @@
 			"score": 2738,
 			"timeStart": 76057,
 			"sentence": "according to the rules of the common law."
+		},
+		"amanrock": {
+			"score": 0,
+			"timeStart": 66426,
+			"sentence": "consent of the Owner, nor in time of war, but in a manner to be prescribed by"
+		},
+		"testing": {
+			"score": 0,
+			"timeStart": 66551,
+			"sentence": "to deny or disparage others retained by the people."
+		},
+		"testing2": {
+			"score": 1300,
+			"timeStart": 66738,
+			"sentence": "A well regulated Militia, being necessary to the security of a free State, the"
 		}
 	}
 }

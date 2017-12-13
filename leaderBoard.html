@@ -97,23 +97,29 @@
         <!-- ................................Extracting JSON from file to html page............................... -->
         <script>
             var users = [];
+            var temp;
+            var tem;
             $.getJSON('/userNameDataBase.json', function(parsedJSON) { 
-                console.log(parsedJSON.userNameData["Aaron"].score);
+               // console.log(parsedJSON.userNameData["Aaron"].score);
                 for(var entry in parsedJSON.userNameData) { 
                     users.push(entry);                     
                 }
                 
-                for (var i = 0; i < users.length - 1; i++) {
-                    for (var j = i + 1; j < users.length; j++) {
-                        console.log(parsedJSON.userNameData[users[i]].score)
-                        if (parsedJSON.userNameData[users[i]].score < parsedJSON.userNameData[users[j]].score) {
-                            var temp = parsedJSON.userNameData[users[i]].score;
-                            parsedJSON.userNameData[users[i]].score = parsedJSON.userNameData[users[j]].score;
-                            parsedJSON.userNameData[users[j]].score = temp;
+                for (var i = 0; i < users.length; i++) {
+                    temp = i;
+                    for (var j = i; j < users.length; j++) {
+                        // console.log(parsedJSON.userNameData[users[j]].score)
+                        if (parsedJSON.userNameData[users[j]].score > parsedJSON.userNameData[users[temp]].score) {
+                            temp = j;
                         }
                     }
+                    tem = users[i];
+                    users[i] = users[temp];
+                    users[temp] = tem;
+                    console.log(i + users[i]);
                 } 
-                for (var i = 0; i < users.length - 1; i++) {
+                for (var i = 0; i < users.length; i++) {
+                    //console.log(users[i]);
                     $("<h3 style=\"color:white\"class = \"text-center\">" + users[i] + "   ...   " + parsedJSON.userNameData[users[i]].score + "</h3>").appendTo(".board"); 
                 }
             });
